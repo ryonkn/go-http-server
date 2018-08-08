@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: go-http-server-deployment
+  namespace: go-http-server-namespace
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: go-http-server
+  template:
+    metadata:
+      labels:
+        app: go-http-server
+        namespace: go-http-server-namespace
+    spec:
+      containers:
+      - name: go-http-server
+        image: sample/go-http-server:0.1
+        ports:
+        - containerPort: 8080

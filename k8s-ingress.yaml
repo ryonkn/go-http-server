@@ -1,0 +1,13 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: go-http-server-ingress
+  namespace: go-http-server-namespace
+spec:
+  rules:
+  - host: go-http-server.minikube.dev
+    http:
+      paths:
+      - backend:
+          serviceName: go-http-server-service
+          servicePort: 8080
